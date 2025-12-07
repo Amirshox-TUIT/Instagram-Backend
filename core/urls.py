@@ -49,3 +49,6 @@ urlpatterns += [
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 
+urlpatterns += static(STATIC_URL, document_root=STATIC_ROOT)
+urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
+
