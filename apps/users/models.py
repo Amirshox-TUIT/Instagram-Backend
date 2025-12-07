@@ -37,3 +37,13 @@ class User(AbstractUser):
     def followings_count(self):
         return self.following.count()
 
+
+class SendEmail(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    code = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expired_at = models.DateTimeField()
+
+    def __str__(self):
+        return self.user.email
+

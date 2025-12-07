@@ -6,10 +6,12 @@ app_name = 'users'
 
 urlpatterns = [
     path('register/', register.RegisterAPIView.as_view(), name='register'),
+    path('verify/', register.VerifyAPIView.as_view(), name='verify'),
     path('login/', login.LoginAPIView.as_view(), name='login'),
     path('logout/', login.LogoutAPIView.as_view(), name='logout'),
     path('search/', search.SearchUserAPIView.as_view(), name='search'),
     path('followings/<str:username>/', followings.UserFollowingsAPIView.as_view(), name='followings'),
+    path('followers/<str:username>/', followings.UserFollowersAPIView.as_view(), name='followers'),
     path('<str:username>/unfollow/', followings.FollowUnfollowUserAPIView.as_view(), name='unfollow'),
     path('<str:username>/follow/', followings.FollowUnfollowUserAPIView.as_view(), name='follow'),
     path('u/<str:username>/', profile.ProfileDetailView.as_view(), name='profile-detail'),

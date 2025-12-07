@@ -20,12 +20,18 @@ class LoginAPIView(APIView):
 
         if not serializer.is_valid():
             return CustomResponse.error(
-                message_key="LOGIN_FAILED",
+                message_key="VALIDATION_ERROR",
                 errors=serializer.errors,
                 status_code=status.HTTP_400_BAD_REQUEST
             )
 
         user = serializer.validated_data['user']
+
+        if not user.is_active:
+            return CustomResponse.forbidden(
+                status_code=status.HTTP_403_FORBIDDEN
+            )
+
         refresh = RefreshToken.for_user(user)
         access = str(refresh.access_token)
 

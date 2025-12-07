@@ -44,8 +44,8 @@ ACCOUNT_MESSAGES: Dict[str, MessageTemplate] = {
     "USER_ALREADY_EXISTS": {
         "id": "USER_ALREADY_EXISTS",
         "chats": {
-            "en": "User with email {email} already exists",
-            "uz": "{email} elektron pochtasi bilan foydalanuvchi allaqachon mavjud",
+            "en": "User with email  already exists",
+            "uz": "elektron pochtasi bilan foydalanuvchi allaqachon mavjud",
             "ru": "Пользователь с email {email} уже существует",
         },
         "status_code": 400

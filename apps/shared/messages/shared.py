@@ -147,6 +147,15 @@ SHARED_MESSAGES: Dict[str, MessageTemplate] = {
         },
         "status_code": 200
     },
+    "FOLLOWERS_FETCHED": {
+            "id": "FOLLOWERS_FETCHED",
+            "chats": {
+                "en": "Followers fetched successfully",
+                "uz": "Kuzatuvlarchilar muvaffaqiyatli olib kelindi",
+                "ru": "Список подписчиков успешно получен"
+            },
+            "status_code": 200
+        },
     "NO_MORE_POSTS": {
         "id": "NO_MORE_POSTS",
         "chats": {

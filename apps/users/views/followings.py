@@ -32,6 +32,28 @@ class UserFollowingsAPIView(APIView):
         )
 
 
+class UserFollowersAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return CustomResponse.error(
+                message_key="USER_NOT_FOUND",
+                status_code=status.HTTP_404_NOT_FOUND
+            )
+
+        followers = user.followers.all()
+        serializer = UserSerializer(followers, many=True)
+
+        return CustomResponse.success(
+            message_key="FOLLOWERS_FETCHED",
+            data={"followers": serializer.data},
+            status_code=status.HTTP_200_OK
+        )
+
+
 class FollowUnfollowUserAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
