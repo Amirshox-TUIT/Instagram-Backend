@@ -1,38 +1,19 @@
 import os
-from pathlib import Path
 
-import environ
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Initialize environment manager
-env = environ.Env()
-
-# Try to find .env file in multiple possible locations
-env_path = os.path.join(BASE_DIR, '.env')
-if not os.path.exists(env_path):
-    env_path = os.path.join(BASE_DIR.parent, '.env')
-
-# Read the .env file from the found location
-if os.path.exists(env_path):
-    environ.Env.read_env(env_path)
-else:
-    print("⚠️  Warning: .env file not found!")
-
-MEDIA_ROOT = env('MEDIA_ROOT', default='/vol/web/media/')
-STATIC_ROOT = env('STATIC_ROOT', default='/vol/web/static/')
+MEDIA_ROOT = os.environ.get('MEDIA_ROOT', '/vol/web/media/')
+STATIC_ROOT = os.environ.get('STATIC_ROOT', default='/vol/web/static/')
 
 # DATABASE SETTINGS
-DB_HOST = env('DB_HOST', default='db')
-DB_NAME = env('DB_NAME')
-DB_USER = env('DB_USER')
-DB_PASS = env('DB_PASS')
-DB_PORT = env('DB_PORT')
+DB_HOST = os.environ.get('DB_HOST', default='db')
+DB_NAME = os.environ.get('DB_NAME')
+DB_USER = os.environ.get('DB_USER')
+DB_PASS = os.environ.get('DB_PASS')
+DB_PORT = os.environ.get('DB_PORT')
 
-DJANGO_SECRET_KEY = env('DJANGO_SECRET_KEY', default='amirshoxamirshoxghjkghjk')
-DEBUG = env('DEBUG', default=True)
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+DJANGO_SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', default='amirshoxamirshoxghjkghjk')
+DEBUG = os.environ.get('DEBUG', default=True)
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", '*').split(',')
 
-# telegram bot
-TELEGRAM_BOT_TOKEN = env('TELEGRAM_BOT_TOKEN')
-TELEGRAM_CHANNEL_ID = env('TELEGRAM_CHANNEL_ID', default='id')
+TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
+TELEGRAM_CHANNEL_ID = os.environ.get('TELEGRAM_CHANNEL_ID', default='id')
