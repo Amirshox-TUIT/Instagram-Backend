@@ -29,6 +29,10 @@ DB_USER = env('DB_USER')
 DB_PASS = env('DB_PASS')
 DB_PORT = env('DB_PORT')
 
+DJANGO_SECRET_KEY = env('DJANGO_SECRET_KEY', default='amirshoxamirshoxghjkghjk')
+DEBUG = env('DEBUG', default=True)
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+
 # telegram bot
 TELEGRAM_BOT_TOKEN = env('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHANNEL_ID = env('TELEGRAM_CHANNEL_ID', default='id')
