@@ -24,6 +24,7 @@ from drf_spectacular.views import (
     SpectacularRedocView,
 )
 
+from core import settings
 from core.settings import STATIC_ROOT, MEDIA_ROOT, STATIC_URL, MEDIA_URL
 
 urlpatterns = [
@@ -49,6 +50,7 @@ urlpatterns += [
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 
-urlpatterns += static(STATIC_URL, document_root=STATIC_ROOT)
-urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(STATIC_URL, document_root=STATIC_ROOT)
+    urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
 

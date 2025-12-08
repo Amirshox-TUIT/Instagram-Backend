@@ -123,10 +123,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = config.STATIC_ROOT
+# Static files
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'  # /var/www/Instagram-Backend/static ga moslash mumkin
+
+# Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = config.MEDIA_ROOT
+MEDIA_ROOT = BASE_DIR / 'media'   # Nginx orqali xizmat qilinadi
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -171,8 +175,8 @@ TELEGRAM_CHANNEL_ID = config.TELEGRAM_CHANNEL_ID
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://instagram-frontend-4mkw.onrender.com/',
     'https://amirshox.uz',
     'https://www.amirshox.uz',
     'http://134.209.240.171',
+    'https://instagram-frontend-4mkw.onrender.com/',
 ]

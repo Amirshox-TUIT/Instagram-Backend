@@ -11,9 +11,6 @@ env = environ.Env(
 )
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-# STATIC & MEDIA
-MEDIA_ROOT = env('MEDIA_ROOT', default=os.path.join(BASE_DIR, 'media'))
-STATIC_ROOT = env('STATIC_ROOT', default=os.path.join(BASE_DIR, 'static'))
 
 # DATABASE SETTINGS
 DB_HOST = env('DB_HOST', default='localhost')  # local uchun localhost
