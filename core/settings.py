@@ -169,3 +169,9 @@ TELEGRAM_BOT_TOKEN = config.TELEGRAM_BOT_TOKEN
 TELEGRAM_CHANNEL_ID = config.TELEGRAM_CHANNEL_ID
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://amirshox.uz',
+    'https://www.amirshox.uz',
+    'https://134.209.240.171',
+]
