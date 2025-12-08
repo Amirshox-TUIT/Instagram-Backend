@@ -268,3 +268,37 @@ class UnreadMessagesCountAPIView(APIView):
                 errors={"error": str(e)},
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
+
+class DeleteChatView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, username):
+        try:
+            current_user = request.user
+            messages = Message.objects.filter(
+                Q(sender=current_user, recipient__username=username) |
+                Q(sender__username=username, recipient=current_user)
+            )
+            deleted_count = messages.count()
+
+            if deleted_count == 0:
+                return CustomResponse.error(
+                        message_key="NOT_FOUND",
+                        status_code=status.HTTP_404_NOT_FOUND
+                )
+            messages.delete()
+
+            return CustomResponse.success(
+                    data={
+                        "deleted_count": deleted_count,
+                        "chat_with": username
+                    },
+                    status_code=status.HTTP_200_OK
+            )
+
+        except Exception as e:
+            return CustomResponse.error(
+                message_key="VALIDATION_ERROR",
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
