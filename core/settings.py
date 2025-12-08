@@ -171,6 +171,7 @@ TELEGRAM_CHANNEL_ID = config.TELEGRAM_CHANNEL_ID
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://instagram-frontend-4mkw.onrender.com/',
     'https://amirshox.uz',
     'https://www.amirshox.uz',
     'http://134.209.240.171',
