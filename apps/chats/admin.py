@@ -6,6 +6,6 @@ from apps.chats.models import Message
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
-    list_filter = ("content", 'sender_id', 'recipient')
-    list_display = ("id", "content", "sender_id", "recipient")
+    list_filter = ("content", 'sender', 'recipient')
+    list_display = ("id", "content", "sender", "recipient")
     search_fields = ("id", "content")
